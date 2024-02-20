@@ -115,7 +115,7 @@ func (exporter *Exporter) GetVersion(client xmlrpc.Client, ch chan<- prometheus.
 
 	err := client.Call("GetASLongVersion", nil, result)
 	if err != nil {
-		log.Printf("Unable to fetch subscription metrics: %v", err)
+		log.Printf("Unable to fetch version metrics: %v", err)
 		return err
 	}
 
