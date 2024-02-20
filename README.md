@@ -17,6 +17,9 @@ Based on [openvpnas-exporter](https://github.com/rossigee/openvpnas-exporter).
 ## Exposed metrics example
 
 ```
+# HELP openvpnas_build_info A metric with a constant '1' value labeled by version, revision, branch, goversion from which openvpnas was build, and the goos and goarch for the build.
+# TYPE openvpnas_build_info gauge
+openvpnas_build_info{branch="",goarch="amd64",goos="linux",goversion="go1.21.1",revision="unknown",tags="unknown",version="(devel)"} 1
 # HELP openvpnas_server_connected_clients Number of currently connected clients to the server.
 # TYPE openvpnas_server_connected_clients gauge
 openvpnas_server_connected_clients 1

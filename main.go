@@ -6,22 +6,24 @@ import (
 	"net/http"
 	"runtime/debug"
 
+	exporterVersion "github.com/elastx/openvpnas_exporter/version"
+
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 var (
-	Version string
+	version string
 )
 
 func init() {
 	buildInfo, ok := debug.ReadBuildInfo()
-	if Version == "" && ok && buildInfo != nil && buildInfo.Main.Version != "" {
-		Version = buildInfo.Main.Version
+	if version == "" && ok && buildInfo != nil && buildInfo.Main.Version != "" {
+		version = buildInfo.Main.Version
 	}
-	if Version == "" {
-		Version = "devel"
+	if version == "" {
+		version = "devel"
 	}
 }
 
@@ -40,18 +42,15 @@ func main() {
 			"Path to the XML-RPC unix domain socket file.",
 		).Default("/usr/local/openvpn_as/etc/sock/sagent.localroot").String()
 	)
-	kingpin.Version(fmt.Sprintf("openvpnas_exporter version %v", Version))
+	kingpin.Version(fmt.Sprintf("openvpnas_exporter version %v", version))
 	kingpin.Parse()
 
-	log.Printf("Starting openvpnas_exporter version %v\n", Version)
+	log.Printf("Starting openvpnas_exporter version %v\n", version)
 	log.Printf("Listen address: %v\n", *listenAddress)
 	log.Printf("Metrics path: %v\n", *metricsPath)
 	log.Printf("XML-RPC path: %v\n", *xmlrpcPath)
 
-	// TODO(holmsten): Once https://github.com/prometheus/client_golang/pull/1427 is in a release (> 1.8)
-	// we can update and use the following below instead:
-	// buildInfo := version.NewCollector("openvpnas")
-	buildInfo := prometheus.NewBuildInfoCollector()
+	buildInfo := exporterVersion.NewVersionCollector("openvpnas", version)
 	prometheus.MustRegister(buildInfo)
 
 	exporter, err := New(*xmlrpcPath)
