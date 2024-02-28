@@ -5,8 +5,8 @@ go 1.21.1
 require (
 	alexejk.io/go-xmlrpc v0.5.1
 	github.com/alecthomas/kingpin/v2 v2.4.0
-	github.com/prometheus/client_golang v1.18.0
-	github.com/prometheus/common v0.47.0
+	github.com/prometheus/client_golang v1.19.0
+	github.com/prometheus/common v0.48.0
 )
 
 require (
