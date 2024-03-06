@@ -1,6 +1,6 @@
 module github.com/elastx/openvpnas_exporter
 
-go 1.21.1
+go 1.21.8
 
 require (
 	alexejk.io/go-xmlrpc v0.5.1
