@@ -14,7 +14,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: git fetch --force --tags
-      - uses: anchore/sbom-action/download-syft@v0.15.10
+      - uses: anchore/sbom-action/download-syft@v0.15.11
       - uses: actions/setup-go@v5
         with:
           go-version: '1.21'
