@@ -143,6 +143,7 @@ func (exporter *Exporter) GetSubscriptionStatus(client xmlrpc.Client, ch chan<- 
 			Overdraft               bool     `xmlrpc:"overdraft"`
 			Server                  string   `xmlrpc:"server"`
 			State                   string   `xmlrpc:"state"`
+			Subkey                  string   `xmlrpc:"subkey"`
 			TotalCc                 int      `xmlrpc:"total_cc"`
 			Type                    string   `xmlrpc:"type"`
 			UpdatesFailed           int      `xmlrpc:"updates_failed"`
