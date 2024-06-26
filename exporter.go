@@ -86,7 +86,7 @@ func (exporter *Exporter) Collect(ch chan<- prometheus.Metric) {
 		},
 	}
 
-	opts := []xmlrpc.Option{xmlrpc.HttpClient(&httpc)}
+	opts := []xmlrpc.Option{xmlrpc.HttpClient(&httpc), xmlrpc.SkipUnknownFields(true)}
 	client, _ := xmlrpc.NewClient("http://localhost/", opts...)
 	defer client.Close()
 
