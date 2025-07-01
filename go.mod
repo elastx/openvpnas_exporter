@@ -3,7 +3,7 @@ module github.com/elastx/openvpnas_exporter
 go 1.21.8
 
 require (
-	alexejk.io/go-xmlrpc v0.5.3
+	alexejk.io/go-xmlrpc v0.6.0
 	github.com/alecthomas/kingpin/v2 v2.4.0
 	github.com/prometheus/client_golang v1.21.0
 	github.com/prometheus/common v0.63.0

@@ -1,5 +1,5 @@
-alexejk.io/go-xmlrpc v0.5.3 h1:7YxuXykECLg2O1eornJ1oQrJja1jerC9lVdKGcq02dE=
-alexejk.io/go-xmlrpc v0.5.3/go.mod h1:zyrQOfw7lOE6HFTDjsiTLUaMqMGXraHJqjfzxfH9cHM=
+alexejk.io/go-xmlrpc v0.6.0 h1:blxykv8RiBqLnmYvaNjq2dRCCTVa4dI71MtIXxXNYk4=
+alexejk.io/go-xmlrpc v0.6.0/go.mod h1:AvQmt13qqJ/JpaC/gD8479KzPl//+3C8ONi1U1sNEyE=
 github.com/alecthomas/kingpin/v2 v2.4.0 h1:f48lwail6p8zpO1bC4TxtqACaGqHYA22qkHjHpqDjYY=
 github.com/alecthomas/kingpin/v2 v2.4.0/go.mod h1:0gyi0zQnjuFk8xrkNKamJoyUo382HRL7ATRpFZCw6tE=
 github.com/alecthomas/units v0.0.0-20211218093645-b94a6e3cc137 h1:s6gZFSlWYmbqAuRjVTiNNhvNRfY2Wxp9nhfyel4rklc=
