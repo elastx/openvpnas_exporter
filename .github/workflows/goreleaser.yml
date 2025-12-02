@@ -1,22 +1,36 @@
 name: goreleaser
 
 on:
-  pull_request: {}
-  push:
-    branches:
-      - master
-    tags:
-      - 'v[0-9]+\.[0-9]+\.[0-9]+'
-
-permissions:
-  contents: write
-  packages: write
+  workflow_call:
+    inputs:
+      version:
+        description: "Version vX.Y.Z to release"
+        required: false
+        type: string
+    secrets:
+      GOR_GITHUB_TOKEN:
+        description: "Token needed to perform Github release"
+        required: false
+defaults:
+  run:
+    shell: bash
 
 jobs:
   goreleaser:
-    uses: elastx/wf-goreleaser/.github/workflows/goreleaser.yml@v2
-    with:
-      version: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || '' }}
-    secrets:
-      CICD_ELASTX_RO_PRIVATE_SSH_KEY: ${{ secrets.CICD_ELASTX_RO_PRIVATE_SSH_KEY }}
-      GOR_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - run: git fetch --force --tags
+      - uses: anchore/sbom-action/download-syft@v0.20.10
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: 'go.mod'
+      - uses: goreleaser/goreleaser-action@v6
+        with:
+          distribution: goreleaser
+          version: latest
+          args: ${{ inputs.version && 'release --clean' || 'release --snapshot --clean' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GOR_GITHUB_TOKEN }}
