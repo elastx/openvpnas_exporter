@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   goreleaser:
-    uses: .github/workflows/goreleaser.yml
+    uses: ./.github/workflows/goreleaser.yml
     with:
       version: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || '' }}
     secrets:
