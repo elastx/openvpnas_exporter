@@ -17,7 +17,7 @@ defaults:
 
 jobs:
   goreleaser:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
